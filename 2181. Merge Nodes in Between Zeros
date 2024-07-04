@@ -1,0 +1,22 @@
+Time complexity : O(n)
+Space complexity : O(1)
+
+class Solution {
+    public ListNode mergeNodes(ListNode head) {
+        ListNode temp = new ListNode(100);
+        ListNode res = temp;
+        int sum = 0;
+        head = head.next;
+        while(head != null){
+            if(head.val == 0){
+                temp.next = new ListNode(sum);
+                temp = temp.next;
+                sum = 0;
+            }else{
+                sum = sum + head.val;
+            }
+            head = head.next;
+        }
+        return res.next;
+    }
+}
