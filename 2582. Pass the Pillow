@@ -1,0 +1,25 @@
+Time complexity : O(n)
+Space complexity : O(1)
+
+class Solution {
+    public int passThePillow(int n, int time) {
+        int res = 1;
+        boolean flag = false;
+
+        while(time > 0){
+            if(!flag){
+                res++;
+                if(res == n){
+                    flag = true;;
+                }
+            }else{
+                res--;
+                if(res == 1){
+                    flag = false;
+                }
+            }
+            time--;
+        }
+        return res;
+    }
+}
