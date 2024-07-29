@@ -1,0 +1,38 @@
+Time complexity : O(n^2);
+Space complexity : O(1)
+
+class Solution {
+    public int numTeams(int[] rating) {
+        int n= rating.length;
+        int team = 0;
+        
+
+        for(int i=1;i<n-1;i++){
+            int smallerLeft = 0;
+            int greaterRight = 0;
+
+            int greaterLeft = 0;
+            int smallerRight = 0;
+            
+            //strictly increasing
+            for(int j=0;j<i;j++){
+                if(rating[j] < rating[i]){
+                    smallerLeft++;
+                }else if(rating[j] > rating[i]){
+                    greaterLeft++;
+                }
+            }
+
+            //strictly decreasing
+            for(int k=i+1;k<n;k++){
+                if(rating[i] > rating[k]){
+                    smallerRight++;
+                }else if(rating[i] < rating[k]){
+                    greaterRight++;
+                }
+            }
+            team += (smallerLeft * greaterRight) + (smallerRight * greaterLeft);
+        }
+        return team;
+    }
+}
