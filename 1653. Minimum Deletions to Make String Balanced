@@ -1,0 +1,20 @@
+Approach : Using Stack
+Time complexity : O(n);
+Space complexity : O(n)
+
+class Solution {
+    public int minimumDeletions(String s) {
+        Stack<Character> st = new Stack<>();
+
+        int result = 0;
+        for(int i=0;i<s.length();i++){
+            if(!st.isEmpty() && s.charAt(i) == 'a' && st.peek() == 'b'){
+                st.pop();
+                result++;
+            }else{
+                st.push(s.charAt(i));
+            }
+        }
+        return result;
+    }
+}
