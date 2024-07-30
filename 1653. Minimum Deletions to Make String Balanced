@@ -82,3 +82,34 @@ class Solution {
         return result;
     }
 }
+
+Approach 4 : 
+Time complexity :O(n);
+Space complexity: O(1)
+
+class Solution {
+    public int minimumDeletions(String s) {
+        int n = s.length();
+
+        int aCount = 0;
+        for(int x : s.toCharArray()){
+            if(x == 'a'){
+                aCount++;
+            }
+        }
+
+        int bCount = 0;
+        int result = Integer.MAX_VALUE;
+
+        for(int x : s.toCharArray()){
+            if(x == 'a'){
+                aCount--;
+            }
+            result = Math.min(result, aCount + bCount);
+            if(x == 'b'){
+                bCount++;
+            }
+        }
+        return result;
+    }
+}
